@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import * as ReadableAPI from './utils/ReadableAPI'
-import './App.css';
+import './App.css'
 
 class App extends Component {
   state = {
@@ -10,23 +11,24 @@ class App extends Component {
   componentDidMount() {
     ReadableAPI.getPosts().then((posts) => {
       this.setState({ posts })
-      console.log(posts)
     })
   }
 
   render() {
     return (
       <div className="app">
-        <div className="posts">
-          {this.state.posts.map((post) => (
-            <div className="post" key={post.id}>
-              <h1 className="post__title">{post.title}</h1>
-              <p className="post__body">{post.body}</p>
-            </div>
-          ))}
-        </div>
+        <Route exact path="/" render={() => (
+          <div className="posts">
+            {this.state.posts.map((post) => (
+              <div className="post" key={post.id}>
+                <h1 className="post__title">{post.title}</h1>
+                <p className="post__body">{post.body}</p>
+              </div>
+            ))}
+          </div>
+        )}/>
       </div>
-    );
+    )
   }
 }
 
