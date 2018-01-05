@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import * as ReadableAPI from './utils/ReadableAPI'
 import './App.css';
 
 class App extends Component {
+  state = {
+    posts: []
+  }
+
+  componentDidMount() {
+    ReadableAPI.getPosts().then((posts) => {
+      this.setState({ posts })
+      console.log(posts)
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="app">
+        <div className="posts">
+          {this.state.posts.map((post) => (
+            <div className="post" key={post.id}>
+              <h1 className="post__title">{post.title}</h1>
+              <p className="post__body">{post.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
