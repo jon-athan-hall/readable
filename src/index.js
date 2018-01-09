@@ -7,7 +7,7 @@ import postsReducer from './reducers/posts'
 import App from './components/App'
 
 const reducer = combineReducers({
-  postsReducer
+  posts: postsReducer
 })
 
 const store = createStore(reducer)
