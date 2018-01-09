@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getAllPosts } from '../actions/posts'
+
+/**
+ * API
+ */
 import * as ReadableAPI from '../utils/ReadableAPI'
+
+/**
+ * Actions
+ */
+import { getAllPosts } from '../actions/posts'
+import { getAllCategories } from '../actions/categories'
+
+/**
+ * Components
+ */
 import Post from './Post'
 
 class App extends Component {
@@ -11,22 +24,35 @@ class App extends Component {
       .then((posts) => {
         this.props.getAllPosts(posts)
       })
+    ReadableAPI.getCategories()
+      .then((categories) => {
+        this.props.getAllCategories(categories)
+      })
   }
 
   render() {
-    const { posts } = this.props
+    const { posts, categories } = this.props
 
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <div className="posts">
-            {posts && posts.map((post) => (
-              <Post post={post} key={post.id} />
-            ))}
-            <Link
-              className="link--new-post"
-              to="/posts/new"
-            >Create a New Post</Link>
+          <div>
+            <div className="categories">
+              {categories && categories.map((category) => (
+                <div className="category" key={category.path}>
+                  <h2>{category.name}</h2>
+                </div>
+              ))}
+            </div>
+            <div className="posts">
+              {posts && posts.map((post) => (
+                <Post post={post} key={post.id} />
+              ))}
+              <Link
+                className="link--new-post"
+                to="/posts/new"
+              >Create a New Post</Link>
+            </div>
           </div>
         )}/>
         <Route path="/posts/new" render={() => (
@@ -42,9 +68,10 @@ class App extends Component {
 /**
  * Directions to map the Redux store to the Component props.
  */
-function mapStateToProps({ posts }, ownProps) {
+function mapStateToProps({ posts, categories }, ownProps) {
   return {
-    posts
+    posts,
+    categories
   }
 }
 
@@ -53,7 +80,8 @@ function mapStateToProps({ posts }, ownProps) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    getAllPosts: (data) => dispatch(getAllPosts(data))
+    getAllPosts: (data) => dispatch(getAllPosts(data)),
+    getAllCategories: (data) => dispatch(getAllCategories(data))
   }
 }
 

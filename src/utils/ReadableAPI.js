@@ -9,3 +9,9 @@ export const getPosts = () =>
   fetch(`${baseURL}/posts`, {
     headers
   }).then(res => res.json())
+
+export const getCategories = () =>
+  fetch(`${baseURL}/categories`, {
+    headers
+  }).then(res => res.json())
+    .then(res => res.categories)
