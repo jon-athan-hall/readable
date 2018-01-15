@@ -13,7 +13,6 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 /**
  * Actions
  */
-import { getAllPosts } from '../actions/posts'
 import { getAllCategories } from '../actions/categories'
 
 /**
@@ -24,10 +23,6 @@ import PostForm from './PostForm'
 
 class App extends Component {
   componentDidMount() {
-    ReadableAPI.getPosts()
-      .then((posts) => {
-        this.props.getAllPosts(posts)
-      })
     ReadableAPI.getCategories()
       .then((categories) => {
         this.props.getAllCategories(categories)
@@ -66,10 +61,9 @@ class App extends Component {
 /**
  * Directions to map parts of the Redux store to the Component props.
  */
-const mapStateToProps = ({ posts, categories }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    posts,
-    categories
+    categories: state.categories
   }
 }
 
@@ -78,7 +72,6 @@ const mapStateToProps = ({ posts, categories }, ownProps) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllPosts: (data) => dispatch(getAllPosts(data)),
     getAllCategories: (data) => dispatch(getAllCategories(data))
   }
 }

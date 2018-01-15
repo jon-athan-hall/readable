@@ -10,16 +10,15 @@ import './index.css';
 /**
  * Redux
  */
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
 /**
  * Redux - Reducers
  */
 import postsReducer from './reducers/posts'
 import categoriesReducer from './reducers/categories'
-
-import { addPost } from './actions/posts'
 
 /**
  * Redux - Store
@@ -28,10 +27,7 @@ const reducer = combineReducers({
   posts: postsReducer,
   categories: categoriesReducer
 })
-const store = createStore(reducer)
-
-window.store = store
-window.addPost = addPost
+const store = createStore(reducer, applyMiddleware(thunk))
 
 /**
  * React - Render

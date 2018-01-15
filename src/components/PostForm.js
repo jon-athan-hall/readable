@@ -85,9 +85,9 @@ class PostForm extends Component {
 /**
  * Directions to map parts of the Redux store to the Component props.
  */
-const mapStateToProps = ({ categories }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    categories
+    categories: state.categories
   }
 }
 

@@ -2,7 +2,7 @@
  * Import actions for Posts
  */
 import {
-  GET_ALL_POSTS,
+  FETCH_POSTS_SUCCESS,
   ADD_POST
 } from '../actions/posts'
 
@@ -13,7 +13,7 @@ const initialState = []
  */
 const posts = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ALL_POSTS:
+    case FETCH_POSTS_SUCCESS:
       return action.posts
     case ADD_POST:
       const { post } = action

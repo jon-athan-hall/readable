@@ -1,14 +1,16 @@
+import * as ReadableAPI from '../utils/ReadableAPI'
+
 /**
  * Action types for Posts
  */
-export const GET_ALL_POSTS = 'GET_ALL_POSTS'
+export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const ADD_POST = 'ADD_POST'
 
 /**
  * Action creators for Posts
  */
-export const getAllPosts = (posts) => ({
-  type: GET_ALL_POSTS,
+export const fetchPostsSuccess = (posts) => ({
+  type: FETCH_POSTS_SUCCESS,
   posts
 })
 
@@ -23,3 +25,14 @@ export const addPost = ({ id, timestamp, title, body, author, category }) => ({
     category
   }
 })
+
+/**
+ * Asynchronous action creator that returns a function instead of an object, thanks to thunk.
+ */
+export const fetchPosts = () => (dispatch) => (
+  ReadableAPI
+    .getPosts()
+    .then((posts) => {
+      dispatch(fetchPostsSuccess(posts))
+    })
+)
