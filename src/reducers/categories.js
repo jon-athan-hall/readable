@@ -2,7 +2,7 @@
  * Import actions for Categories
  */
 import {
-  GET_ALL_CATEGORIES
+  FETCH_CATEGORIES_SUCCESS
 } from '../actions/categories'
 
 /**
@@ -10,7 +10,7 @@ import {
  */
 const categories = (state = [], action) => {
   switch (action.type) {
-    case GET_ALL_CATEGORIES:
+    case FETCH_CATEGORIES_SUCCESS:
       return action.categories
     default:
       return state

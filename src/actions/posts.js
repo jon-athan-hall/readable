@@ -28,6 +28,7 @@ export const addPost = ({ id, timestamp, title, body, author, category }) => ({
 
 /**
  * Asynchronous action creator that returns a function instead of an object, thanks to thunk.
+ * Other action creators are then dispatched from within this function.
  */
 export const fetchPosts = () => (dispatch) => (
   ReadableAPI
