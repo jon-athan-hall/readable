@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 /**
  * Actions
  */
+import { fetchCategories } from '../actions/categories'
 import { addPost } from '../actions/posts'
 
 /**
@@ -26,6 +27,10 @@ class PostForm extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.fetchCategories()
   }
 
   handleChange(e) {
@@ -76,7 +81,9 @@ class PostForm extends Component {
             ))}
           </select>
         </div>
-        <button className="form__button form__button--submit" type="submit">Submit</button>
+        <div className="form__group">
+          <button className="form__button form__button--submit" type="submit">Submit</button>
+        </div>
       </form>
     )
   }
@@ -96,6 +103,7 @@ const mapStateToProps = (state, ownProps) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchCategories: () => dispatch(fetchCategories()),
     addPost: (post) => dispatch(addPost(post))
   }
 }

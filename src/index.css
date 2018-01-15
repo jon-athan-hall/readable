@@ -48,6 +48,24 @@ table {
 /**
  * Colors
  */
+.form__group {
+  margin: 1em; }
+.form__label {
+  display: block;
+  margin-bottom: .25em; }
+.form__input, .form__textarea {
+  width: 50%;
+  padding: .5em; }
+.form__textarea {
+  height: 10em; }
+.form__button {
+  padding: .5em;
+  background-color: #daa520;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase; }
+
 .post {
   margin: 1em; }
   .post__header {
@@ -64,7 +82,8 @@ body {
   background-color: #000;
   color: #fff;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  font-size: 16px; }
 
 a {
   color: #daa520; }
