@@ -19,10 +19,13 @@ class PostList extends Component {
     return (
       <ul className="post-list">
         {this.props.posts.map((post) => (
-          <div className="post" key={post.id}>
-            <h1 className="post__heading">{post.title}</h1>
+          <article className="post" key={post.id}>
+            <header className="post__header">
+              <h1 className="post__heading">{post.title}</h1>
+              <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
+            </header>
             <p className="post__body">{post.body}</p>
-          </div>
+          </article>
         ))}
       </ul>
     )

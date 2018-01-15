@@ -45,6 +45,21 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/**
+ * Colors
+ */
+.post {
+  margin: 1em; }
+  .post__header {
+    margin-bottom: 1em; }
+  .post__heading {
+    margin-bottom: .25em;
+    font-size: 1.5em; }
+  .post__byline {
+    font-size: .75em; }
+  .post__author {
+    color: #daa520; }
+
 body {
   background-color: #000;
   color: #fff;
