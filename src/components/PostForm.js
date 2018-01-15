@@ -2,6 +2,7 @@
  * React
  */
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import uuidv1 from "uuid"
 import { connect } from 'react-redux'
 
@@ -30,6 +31,7 @@ class PostForm extends Component {
   }
 
   componentDidMount() {
+    this.resetForm()
     this.props.fetchCategories()
   }
 
@@ -46,7 +48,7 @@ class PostForm extends Component {
     const timestamp = Date.now()
     const { title, body, author, category } = this.state
     this.props.addPost({ id, timestamp, title, body, author, category })
-    this.resetForm()
+    this.props.history.push('/')
   }
 
   resetForm() {
@@ -111,4 +113,4 @@ const mapDispatchToProps = (dispatch) => {
 /**
  * Connect this Component to the Redux Store.
  */
-export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostForm))

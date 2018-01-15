@@ -5,11 +5,6 @@ import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 
 /**
- * API
- */
-import * as ReadableAPI from '../utils/ReadableAPI'
-
-/**
  * Components
  */
 import CategoryList from './CategoryList'

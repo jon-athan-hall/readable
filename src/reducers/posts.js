@@ -3,7 +3,7 @@
  */
 import {
   FETCH_POSTS_SUCCESS,
-  ADD_POST
+  ADD_POST_SUCCESS
 } from '../actions/posts'
 
 const initialState = []
@@ -15,7 +15,7 @@ const posts = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_POSTS_SUCCESS:
       return action.posts
-    case ADD_POST:
+    case ADD_POST_SUCCESS:
       const { post } = action
       return [...state, post]
     default:
