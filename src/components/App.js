@@ -1,3 +1,6 @@
+/**
+ * React
+ */
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -16,7 +19,8 @@ import { getAllCategories } from '../actions/categories'
 /**
  * Components
  */
-import Post from './Post'
+import PostList from './PostList'
+import PostForm from './PostForm'
 
 class App extends Component {
   componentDidMount() {
@@ -31,7 +35,7 @@ class App extends Component {
   }
 
   render() {
-    const { posts, categories } = this.props
+    const { categories } = this.props
 
     return (
       <div className="app">
@@ -44,21 +48,15 @@ class App extends Component {
                 </div>
               ))}
             </div>
-            <div className="posts">
-              {posts && posts.map((post) => (
-                <Post post={post} key={post.id} />
-              ))}
-              <Link
-                className="link--new-post"
-                to="/posts/new"
-              >Create a New Post</Link>
-            </div>
+            <PostList />
+            <Link
+              className="link--new-post"
+              to="/posts/new"
+            >Create a New Post</Link>
           </div>
         )}/>
         <Route path="/posts/new" render={() => (
-          <div>
-            <h1>Create a New Post</h1>
-          </div>
+          <PostForm />
         )}/>
       </div>
     )
@@ -66,9 +64,9 @@ class App extends Component {
 }
 
 /**
- * Directions to map the Redux store to the Component props.
+ * Directions to map parts of the Redux store to the Component props.
  */
-function mapStateToProps({ posts, categories }, ownProps) {
+const mapStateToProps = ({ posts, categories }, ownProps) => {
   return {
     posts,
     categories
@@ -76,13 +74,16 @@ function mapStateToProps({ posts, categories }, ownProps) {
 }
 
 /**
- * Directions to map the dispatch method to the Component props.
+ * Directions to map particular dispatch methods to the Component props.
  */
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     getAllPosts: (data) => dispatch(getAllPosts(data)),
     getAllCategories: (data) => dispatch(getAllCategories(data))
   }
 }
 
+/**
+ * Connect this Component to the Redux Store.
+ */
 export default connect(mapStateToProps, mapDispatchToProps)(App)

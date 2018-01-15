@@ -14,10 +14,12 @@ export const getAllPosts = (posts) => ({
 
 export const addPost = ({ id, timestamp, title, body, author, category }) => ({
   type: ADD_POST,
-  id,
-  timestamp,
-  title,
-  body,
-  author,
-  category
+  post: {
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category
+  }
 })
