@@ -2,7 +2,7 @@
  * React
  */
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 /**
  * Redux
@@ -17,7 +17,6 @@ import { fetchPosts } from '../actions/posts'
 /**
  * Components
  */
-import CategoryList from './CategoryList'
 import PostList from './PostList'
 import Post from './Post'
 import PostForm from './PostForm'
@@ -30,19 +29,10 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/" render={() => (
-          <div>
-            <CategoryList />
-            <PostList />
-            <Link
-              className="link--new-post"
-              to="/new"
-            >Create a New Post</Link>
-          </div>
-        )}/>
+        <Route exact path="/" component={PostList} />
         <Route exact path="/posts" component={PostList} />
         <Route exact path="/new" component={PostForm} />
-        <Route path="/posts/:id" component={Post} />
+        <Route exact path="/posts/:id" component={Post} />
       </div>
     )
   }
@@ -60,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
 /**
  * Connect this Component to the Redux Store.
  */
-export default connect(null, mapDispatchToProps)(App)
+export default withRouter(connect(null, mapDispatchToProps)(App))

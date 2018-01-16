@@ -2,7 +2,6 @@
  * React
  */
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
 import uuidv1 from "uuid"
 import { connect } from 'react-redux'
 
@@ -113,4 +112,4 @@ const mapDispatchToProps = (dispatch) => {
 /**
  * Connect this Component to the Redux Store.
  */
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostForm))
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
