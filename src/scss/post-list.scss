@@ -1,11 +1,12 @@
-.post {
+.post-list {
   margin: 1em;
-  
-  &__header {
-    margin-bottom: 1em;
+
+  &__item {
+    margin-bottom: 2em;
   }
 
   &__title {
+    display: inline-block;
     margin-bottom: .25em;
     font-size: 1.5em;
   }
@@ -17,4 +18,4 @@
   &__author {
     color: $color--highlight;
   }
-} // .post
+} // .post-list

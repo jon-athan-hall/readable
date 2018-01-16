@@ -2,6 +2,7 @@
 @import 'variables';
 @import 'form';
 @import 'post';
+@import 'post-list';
 
 body {
   background-color: #000;
@@ -12,5 +13,10 @@ body {
 }
 
 a {
-  color: #daa520;
+  color: $color--highlight;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

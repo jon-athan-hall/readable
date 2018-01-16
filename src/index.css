@@ -70,12 +70,25 @@ table {
   margin: 1em; }
   .post__header {
     margin-bottom: 1em; }
-  .post__heading {
+  .post__title {
     margin-bottom: .25em;
     font-size: 1.5em; }
   .post__byline {
     font-size: .75em; }
   .post__author {
+    color: #daa520; }
+
+.post-list {
+  margin: 1em; }
+  .post-list__item {
+    margin-bottom: 2em; }
+  .post-list__title {
+    display: inline-block;
+    margin-bottom: .25em;
+    font-size: 1.5em; }
+  .post-list__byline {
+    font-size: .75em; }
+  .post-list__author {
     color: #daa520; }
 
 body {
@@ -86,6 +99,9 @@ body {
   font-size: 16px; }
 
 a {
-  color: #daa520; }
+  color: #daa520;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
 
 /*# sourceMappingURL=index.css.map */

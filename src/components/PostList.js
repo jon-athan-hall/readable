@@ -3,29 +3,22 @@
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 /**
- * Actions
+ * Redux
  */
-import { fetchPosts } from '../actions/posts'
+import { connect } from 'react-redux'
 
 class PostList extends Component {
-  componentDidMount() {
-    this.props.fetchPosts()
-  }
-
   render() {
     return (
       <ul className="post-list">
         {this.props.posts.map((post) => (
-          <article className="post" key={post.id}>
-            <header className="post__header">
-              <h1 className="post__heading">{post.title}</h1>
-              <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
-            </header>
-            <p className="post__body">{post.body}</p>
-          </article>
+          <li className="post-list__item" key={post.id}>
+            <Link className="post-list__title" to={`/posts/${post.id}`}>{post.title}</Link>
+            <h2 className="post-list__byline">submitted by <span className="post-list__author">{post.author}</span></h2>
+          </li>
         ))}
       </ul>
     )
@@ -49,15 +42,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 /**
- * Directions to map particular dispatch methods to the Component props.
- */
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPosts: () => dispatch(fetchPosts())
-  }
-}
-
-/**
  * Connect this Component to the Redux Store.
  */
-export default connect(mapStateToProps, mapDispatchToProps)(PostList)
+export default connect(mapStateToProps, null)(PostList)

@@ -1,33 +1,49 @@
+/**
+ * React
+ */
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 class Post extends Component {
   render() {
-    const { post } = this.props
-
+    const post = this.props.post
     return (
       <article className="post">
         <header className="post__header">
           <h1 className="post__title">{post.title}</h1>
-          <h2 className="post__byline">by {post.author}</h2>
+          <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
         </header>
         <p className="post__body">{post.body}</p>
-        <div className="post__score">{post.voteScore}</div>
-        <div className="post__controls">
-          <button>&#8593;</button>
-          <button>&#8595;</button>
-          <Link
-            to="/"
-            className="post__link--edit"
-          >Edit</Link>
-          <Link
-            to="/"
-            className="post__link--delete"
-          >Delete</Link>
-        </div>
       </article>
     )
   }
 }
 
-export default Post
+/**
+ * Validation for the Component props.
+ */
+Post.propTypes = {
+  post: PropTypes.object.isRequired
+}
+
+/**
+ * Directions to map parts of the Redux store to the Component props.
+ */
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id
+  let post = {}
+
+  if (state.posts.length > 0) {
+    post = state.posts.find((post) => post.id === id)
+  }
+
+  return {
+    post
+  }
+}
+
+/**
+ * Connect this Component to the Redux Store.
+ */
+export default connect(mapStateToProps, null)(Post)
