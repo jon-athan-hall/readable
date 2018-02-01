@@ -15,8 +15,8 @@ class PostList extends Component {
     return (
       <ul className="post-list">
         {this.props.posts.map((post) => (
-          <li className="post-list__item" key={post.id}>
-            <Link className="post-list__title" to={`/posts/${post.id}`}>{post.title}</Link>
+          <li key={post.id} className="post-list__item">
+            <Link to={`/posts/${post.id}`} className="post-list__title">{post.title}</Link>
             <h2 className="post-list__byline">submitted by <span className="post-list__author">{post.author}</span></h2>
           </li>
         ))}

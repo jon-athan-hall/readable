@@ -8,6 +8,11 @@ import App from './components/App'
 import './index.css';
 
 /**
+ * Actions
+ */
+import { fetchPosts } from './actions/posts'
+
+/**
  * Redux
  */
 import { createStore, combineReducers, applyMiddleware } from 'redux'
@@ -28,6 +33,7 @@ const reducer = combineReducers({
   categories: categoriesReducer
 })
 const store = createStore(reducer, applyMiddleware(thunk))
+store.dispatch(fetchPosts())
 
 /**
  * React - Render

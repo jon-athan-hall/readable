@@ -10,11 +10,6 @@ import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 /**
- * Actions
- */
-import { fetchPosts } from '../actions/posts'
-
-/**
  * Components
  */
 import Header from './Header'
@@ -23,10 +18,6 @@ import Post from './Post'
 import PostForm from './PostForm'
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchPosts()
-  }
-
   render() {
     return (
       <div className="app">
@@ -41,15 +32,6 @@ class App extends Component {
 }
 
 /**
- * Directions to map particular dispatch methods to the Component props.
- */
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPosts: () => dispatch(fetchPosts())
-  }
-}
-
-/**
  * Connect this Component to the Redux Store.
  */
-export default withRouter(connect(null, mapDispatchToProps)(App))
+export default App

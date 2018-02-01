@@ -29,6 +29,9 @@ export const fetchPosts = () => (dispatch) => (
     .then((posts) => {
       dispatch(fetchPostsSuccess(posts))
     })
+    .catch((error) => {
+      throw(error)
+    })
 )
 
 export const addPost = ({ id, timestamp, title, body, author, category }) => (dispatch) => (

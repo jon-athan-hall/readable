@@ -48,6 +48,18 @@ table {
 /**
  * Colors
  */
+.nav {
+  margin: 1em 1em 3em; }
+  .nav__link {
+    margin-right: 1em;
+    padding: .25em 0;
+    text-decoration: none; }
+    .nav__link:last-child {
+      margin-right: 0; }
+    .nav__link:hover {
+      border-bottom: 2px solid #daa520;
+      text-decoration: none; }
+
 .form__group {
   margin: 1em; }
 .form__label {

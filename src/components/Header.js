@@ -14,8 +14,9 @@ import { connect } from 'react-redux'
  */
 const Header = (props) => {
   return (
-    <nav>
-      <Link to="new" className="nav__link" activeClassName="nav__link--active">New Post</Link>
+    <nav className="nav">
+      <Link to="/" className="nav__link">Home</Link>
+      <Link to="new" className="nav__link">New Post</Link>
     </nav>
   )
 }

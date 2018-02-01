@@ -1,0 +1,18 @@
+.nav {
+  margin: 1em 1em 3em;
+
+  &__link {
+    margin-right: 1em;
+    padding: .25em 0;
+    text-decoration: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      border-bottom: 2px solid $color--highlight;
+      text-decoration: none;
+    }
+  }
+} // .nav
