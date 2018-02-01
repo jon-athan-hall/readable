@@ -17,6 +17,7 @@ import { fetchPosts } from '../actions/posts'
 /**
  * Components
  */
+import Header from './Header'
 import PostList from './PostList'
 import Post from './Post'
 import PostForm from './PostForm'
@@ -29,6 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        <Header />
         <Route exact path="/" component={PostList} />
         <Route exact path="/posts" component={PostList} />
         <Route exact path="/new" component={PostForm} />
