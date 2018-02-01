@@ -1,0 +1,19 @@
+.comment-list {
+  margin: 1em;
+
+  &__item {
+    margin: 2em 0 0 2em;
+  }
+
+  &__body {
+    margin-bottom: .25em;
+  }
+
+  &__byline {
+    font-size: .75em;
+  }
+
+  &__author {
+    color: $color--highlight;
+  }
+} // .comment-list

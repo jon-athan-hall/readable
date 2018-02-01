@@ -1,5 +1,7 @@
 .nav {
-  margin: 1em 1em 3em;
+  margin: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid $color--text;
 
   &__link {
     margin-right: 1em;
@@ -11,7 +13,7 @@
     }
 
     &:hover {
-      border-bottom: 2px solid $color--highlight;
+      color: $color--text;
       text-decoration: none;
     }
   }

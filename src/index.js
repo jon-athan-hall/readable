@@ -23,6 +23,7 @@ import thunk from 'redux-thunk'
  * Redux - Reducers
  */
 import postsReducer from './reducers/posts'
+import commentsReducer from './reducers/comments'
 import categoriesReducer from './reducers/categories'
 
 /**
@@ -30,6 +31,7 @@ import categoriesReducer from './reducers/categories'
  */
 const reducer = combineReducers({
   posts: postsReducer,
+  comments: commentsReducer,
   categories: categoriesReducer
 })
 const store = createStore(reducer, applyMiddleware(thunk))

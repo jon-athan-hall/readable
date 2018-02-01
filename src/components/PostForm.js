@@ -3,13 +3,17 @@
  */
 import React, { Component } from 'react'
 import uuidv1 from "uuid"
-import { connect } from 'react-redux'
 
 /**
  * Actions
  */
 import { fetchCategories } from '../actions/categories'
 import { addPost } from '../actions/posts'
+
+/**
+ * Redux
+ */
+import { connect } from 'react-redux'
 
 /**
  * Controlled Component because all form input changes are updated by React,

@@ -49,7 +49,9 @@ table {
  * Colors
  */
 .nav {
-  margin: 1em 1em 3em; }
+  margin: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #fff; }
   .nav__link {
     margin-right: 1em;
     padding: .25em 0;
@@ -57,7 +59,7 @@ table {
     .nav__link:last-child {
       margin-right: 0; }
     .nav__link:hover {
-      border-bottom: 2px solid #daa520;
+      color: #fff;
       text-decoration: none; }
 
 .form__group {
@@ -101,6 +103,17 @@ table {
   .post-list__byline {
     font-size: .75em; }
   .post-list__author {
+    color: #daa520; }
+
+.comment-list {
+  margin: 1em; }
+  .comment-list__item {
+    margin: 2em 0 0 2em; }
+  .comment-list__body {
+    margin-bottom: .25em; }
+  .comment-list__byline {
+    font-size: .75em; }
+  .comment-list__author {
     color: #daa520; }
 
 body {

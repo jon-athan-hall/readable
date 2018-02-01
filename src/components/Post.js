@@ -5,7 +5,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+/**
+ * Actions
+ */
+import { fetchComments } from '../actions/comments'
+
+/**
+ * Components
+ */
+import CommentList from './CommentList'
+
 class Post extends Component {
+  componentDidMount() {
+    this.props.fetchComments(this.props.match.params.id)
+  }
+
   render() {
     const post = this.props.post
     return (
@@ -15,6 +29,7 @@ class Post extends Component {
           <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
         </header>
         <p className="post__body">{post.body}</p>
+        <CommentList />
       </article>
     )
   }
@@ -24,7 +39,7 @@ class Post extends Component {
  * Validation for the Component props.
  */
 Post.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
 }
 
 /**
@@ -44,6 +59,15 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 /**
+ * Directions to map particular dispatch methods to the Component props.
+ */
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchComments: (postId) => dispatch(fetchComments(postId))
+  }
+}
+
+/**
  * Connect this Component to the Redux Store.
  */
-export default connect(mapStateToProps, null)(Post)
+export default connect(mapStateToProps, mapDispatchToProps)(Post)

@@ -2,12 +2,7 @@
  * React
  */
 import React, { Component } from 'react'
-import { Route, withRouter } from 'react-router-dom'
-
-/**
- * Redux
- */
-import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
 
 /**
  * Components
@@ -23,9 +18,8 @@ class App extends Component {
       <div className="app">
         <Header />
         <Route exact path="/" component={PostList} />
-        <Route exact path="/posts" component={PostList} />
-        <Route exact path="/new" component={PostForm} />
         <Route exact path="/posts/:id" component={Post} />
+        <Route exact path="/new" component={PostForm} />
       </div>
     )
   }

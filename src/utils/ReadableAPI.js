@@ -25,6 +25,15 @@ export const createPost = (post) =>
   }).then(res => res.json())
 
 /**
+ * Comments
+ */
+export const getComments = (id) =>
+  fetch(`${baseURL}/posts/${id}/comments`, {
+    method: 'GET',
+    headers
+  }).then(res => res.json())
+
+/**
  * Categories
  */
 export const getCategories = () =>
