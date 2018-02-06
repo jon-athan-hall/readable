@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 /**
  * Actions
@@ -14,6 +14,11 @@ import { fetchComments } from '../actions/comments'
  * Components
  */
 import CommentList from './CommentList'
+
+/**
+ * Redux
+ */
+import { connect } from 'react-redux'
 
 class Post extends Component {
   componentDidMount() {
@@ -29,6 +34,10 @@ class Post extends Component {
           <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
         </header>
         <p className="post__body">{post.body}</p>
+        <div className="post__links">
+          <Link to={`/posts/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
+          <a className="post__link post__link--delete">Delete</a>
+        </div>
         <CommentList />
       </article>
     )

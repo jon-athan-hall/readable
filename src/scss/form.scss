@@ -8,8 +8,8 @@
     margin-bottom: .25em;
   }
 
-  &__input, &__textarea {
-    width: 50%;
+  &__input, &__textarea, &__select {
+    width: 100%;
     padding: .5em;
   }
 
@@ -18,11 +18,15 @@
   }
 
   &__button {
-    padding: .5em;
+    padding: .25em .5em;
     background-color: $color--highlight;
     border: 2px solid #fff;
-    color: #fff;
+    color: $color--text;
     font-size: 16px;
-    text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 } // .form

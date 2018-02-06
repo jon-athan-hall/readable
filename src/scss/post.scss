@@ -17,4 +17,21 @@
   &__author {
     color: $color--highlight;
   }
+
+  &__links {
+    margin: 1em 0;
+  }
+
+  &__link {
+    margin-right: .5em;
+    padding: .25em .5em;
+    background-color: $color--highlight;
+    border: 2px solid $color--text;
+    color: $color--text;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
 } // .post

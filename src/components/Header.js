@@ -11,7 +11,7 @@ const Header = (props) => {
   return (
     <nav className="nav">
       <Link to="/" className="nav__link">Home</Link>
-      <Link to="new" className="nav__link">New Post</Link>
+      <Link to="/new-post" className="nav__link">New Post</Link>
     </nav>
   )
 }

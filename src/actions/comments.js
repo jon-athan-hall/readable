@@ -23,7 +23,4 @@ export const fetchComments = (id) => (dispatch) => (
     .then((comments) => {
       dispatch(fetchCommentsSuccess(comments))
     })
-    .catch((error) => {
-      throw(error)
-    })
 )

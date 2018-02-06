@@ -5,6 +5,7 @@ import * as ReadableAPI from '../utils/ReadableAPI'
  */
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS'
+export const EDIT_POST_SUCCESS = 'EDIT_POST_SUCCESS'
 
 /**
  * Action creators for Posts
@@ -19,6 +20,11 @@ export const addPostSuccess = (post) => ({
   post
 })
 
+export const editPostSuccess = (post) => ({
+  type: EDIT_POST_SUCCESS,
+  post
+})
+
 /**
  * Asynchronous action creators that return functions instead of objects, thanks to thunk.
  * Other action creators are then dispatched from within these functions.
@@ -29,9 +35,6 @@ export const fetchPosts = () => (dispatch) => (
     .then((posts) => {
       dispatch(fetchPostsSuccess(posts))
     })
-    .catch((error) => {
-      throw(error)
-    })
 )
 
 export const addPost = ({ id, timestamp, title, body, author, category }) => (dispatch) => (
@@ -39,5 +42,13 @@ export const addPost = ({ id, timestamp, title, body, author, category }) => (di
     .createPost({ id, timestamp, title, body, author, category })
     .then((post) => {
       dispatch(addPostSuccess(post))
+    })
+)
+
+export const editPost = (id, { title, body }) => (dispatch) => (
+  ReadableAPI
+    .updatePost(id, { title, body })
+    .then((post) => {
+      dispatch(editPostSuccess(post))
     })
 )

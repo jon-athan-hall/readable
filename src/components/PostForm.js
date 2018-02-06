@@ -2,13 +2,14 @@
  * React
  */
 import React, { Component } from 'react'
-import uuidv1 from "uuid"
+import PropTypes from 'prop-types'
+import uuidv1 from 'uuid'
 
 /**
  * Actions
  */
 import { fetchCategories } from '../actions/categories'
-import { addPost } from '../actions/posts'
+import { addPost, editPost } from '../actions/posts'
 
 /**
  * Redux
@@ -20,13 +21,11 @@ import { connect } from 'react-redux'
  * instead of the DOM.
  */
 class PostForm extends Component {
-  constructor() {
-    super()
+  constructor(props, context) {
+    super(props, context)
     this.state = {
-      title: 'Post Title',
-      body: '',
-      author: 'username',
-      category: 'board-games'
+      post: this.props.post,
+      categories: this.props.categories
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -34,60 +33,66 @@ class PostForm extends Component {
   }
 
   componentDidMount() {
-    this.resetForm()
     this.props.fetchCategories()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.post.id !== nextProps.post.id) {
+      this.setState({ post: nextProps.post })
+    }
+  }
+
   handleChange(e) {
-    const target = e.target
-    this.setState({
-      [target.name]: target.value
-    })
+    const post = this.state.post
+    post[e.target.name] = e.target.value
+    this.setState({ post })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    const id = uuidv1()
-    const timestamp = Date.now()
-    const { title, body, author, category } = this.state
-    this.props.addPost({ id, timestamp, title, body, author, category })
+    const { title, body, author, category } = this.state.post
+    let id = this.state.post.id
+    let timestamp
+
+    if (id !== '') {
+      this.props.editPost(id, { title, body })
+    } else {
+      id = uuidv1()
+      timestamp = Date.now()
+      this.props.addPost({ id, timestamp, title, body, author, category })
+    }
+
     this.props.history.push('/')
   }
 
-  resetForm() {
-    this.setState({
-      title: 'Post Title',
-      body: '',
-      author: 'username',
-      category: 'board-games'
-    })
-  }
-
   render() {
+    const post = this.props.post
+    let submitText = (post.id) ? 'Save' : 'Submit'
+
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="form">
         <div className="form__group">
-          <label className="form__label" htmlFor="title">Title</label>
-          <input className="form__input" name="title" type="text" value={this.state.title} onChange={this.handleChange} />
+          <label htmlFor="title" className="form__label">Title</label>
+          <input name="title" type="text" defaultValue={post.title} onChange={this.handleChange} className="form__input" />
         </div>
         <div className="form__group">
-          <label className="form__label" htmlFor="body">Body</label>
-          <textarea className="form__textarea" name="body" value={this.state.body} onChange={this.handleChange} />
+          <label htmlFor="body" className="form__label">Body</label>
+          <textarea name="body" defaultValue={post.body} onChange={this.handleChange} className="form__input" />
         </div>
         <div className="form__group">
-          <label className="form__label" htmlFor="author">Author</label>
-          <input className="form__input" name="author" type="text" value={this.state.author} onChange={this.handleChange} />
+          <label htmlFor="author" className="form__label">Author</label>
+          <input name="author" type="text" defaultValue={post.author} onChange={this.handleChange} className="form__input" />
         </div>
         <div className="form__group">
-          <label className="form__label" htmlFor="category">Category</label>
-          <select className="form__select" name="category" value={this.state.category} onChange={this.handleChange}>
+          <label htmlFor="category" className="form__label">Category</label>
+          <select name="category" defaultValue={post.category} onChange={this.handleChange} className="form__input">
             {this.props.categories.map((category) => (
               <option className="form__option" value={category.path} key={category.path}>{category.name}</option>
             ))}
           </select>
         </div>
         <div className="form__group">
-          <button className="form__button form__button--submit" type="submit">Submit</button>
+          <input type="submit" value={submitText} className="form__button form__button--submit" />
         </div>
       </form>
     )
@@ -95,10 +100,26 @@ class PostForm extends Component {
 }
 
 /**
+ * Validation for the Component props.
+ */
+PostForm.propTypes = {
+  post: PropTypes.object.isRequired,
+  categories: PropTypes.array.isRequired
+}
+
+/**
  * Directions to map parts of the Redux store to the Component props.
  */
 const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id
+  let post = {}
+
+  if (id && state.posts.length) {
+    post = state.posts.find((post) => post.id === id)
+  }
+
   return {
+    post,
     categories: state.categories
   }
 }
@@ -109,7 +130,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
-    addPost: (post) => dispatch(addPost(post))
+    addPost: (post) => dispatch(addPost(post)),
+    editPost: (id, post) => dispatch(editPost(id, post))
   }
 }
 

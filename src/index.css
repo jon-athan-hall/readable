@@ -67,18 +67,20 @@ table {
 .form__label {
   display: block;
   margin-bottom: .25em; }
-.form__input, .form__textarea {
-  width: 50%;
+.form__input, .form__textarea, .form__select {
+  width: 100%;
   padding: .5em; }
 .form__textarea {
   height: 10em; }
 .form__button {
-  padding: .5em;
+  padding: .25em .5em;
   background-color: #daa520;
   border: 2px solid #fff;
   color: #fff;
-  font-size: 16px;
-  text-transform: uppercase; }
+  font-size: 16px; }
+  .form__button:hover {
+    cursor: pointer;
+    text-decoration: none; }
 
 .post {
   margin: 1em; }
@@ -91,6 +93,17 @@ table {
     font-size: .75em; }
   .post__author {
     color: #daa520; }
+  .post__links {
+    margin: 1em 0; }
+  .post__link {
+    margin-right: .5em;
+    padding: .25em .5em;
+    background-color: #daa520;
+    border: 2px solid #fff;
+    color: #fff; }
+    .post__link:hover {
+      cursor: pointer;
+      text-decoration: none; }
 
 .post-list {
   margin: 1em; }
@@ -115,6 +128,12 @@ table {
     font-size: .75em; }
   .comment-list__author {
     color: #daa520; }
+
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
 
 body {
   background-color: #000;
