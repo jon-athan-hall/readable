@@ -54,7 +54,7 @@ class PostForm extends Component {
     let id = this.state.post.id
     let timestamp
 
-    if (id !== '') {
+    if (id) {
       this.props.editPost(id, { title, body })
     } else {
       id = uuidv1()

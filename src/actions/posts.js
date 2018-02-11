@@ -6,6 +6,7 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS'
 export const EDIT_POST_SUCCESS = 'EDIT_POST_SUCCESS'
+export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS'
 
 /**
  * Action creators for Posts
@@ -22,6 +23,11 @@ export const addPostSuccess = (post) => ({
 
 export const editPostSuccess = (post) => ({
   type: EDIT_POST_SUCCESS,
+  post
+})
+
+export const removePostSuccess = (post) => ({
+  type: REMOVE_POST_SUCCESS,
   post
 })
 
@@ -50,5 +56,13 @@ export const editPost = (id, { title, body }) => (dispatch) => (
     .updatePost(id, { title, body })
     .then((post) => {
       dispatch(editPostSuccess(post))
+    })
+)
+
+export const removePost = (id) => (dispatch) => (
+  ReadableAPI
+    .deletePost(id)
+    .then((post) => {
+      dispatch(removePostSuccess(post))
     })
 )

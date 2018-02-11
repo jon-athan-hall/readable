@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
  * Actions
  */
 import { fetchComments } from '../actions/comments'
+import { removePost } from '../actions/posts'
 
 /**
  * Components
@@ -21,8 +22,19 @@ import CommentList from './CommentList'
 import { connect } from 'react-redux'
 
 class Post extends Component {
+  constructor(props, context) {
+    super(props, context)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
   componentDidMount() {
     this.props.fetchComments(this.props.match.params.id)
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.removePost(this.props.post.id)
+    this.props.history.push('/')
   }
 
   render() {
@@ -36,7 +48,7 @@ class Post extends Component {
         <p className="post__body">{post.body}</p>
         <div className="post__links">
           <Link to={`/posts/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
-          <a className="post__link post__link--delete">Delete</a>
+          <a onClick={this.handleClick} className="post__link post__link--delete">Delete</a>
         </div>
         <CommentList />
       </article>
@@ -72,7 +84,8 @@ const mapStateToProps = (state, ownProps) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchComments: (postId) => dispatch(fetchComments(postId))
+    fetchComments: (postId) => dispatch(fetchComments(postId)),
+    removePost: (postId) => dispatch(removePost(postId))
   }
 }
 

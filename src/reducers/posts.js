@@ -4,7 +4,8 @@
 import {
   FETCH_POSTS_SUCCESS,
   ADD_POST_SUCCESS,
-  EDIT_POST_SUCCESS
+  EDIT_POST_SUCCESS,
+  REMOVE_POST_SUCCESS
 } from '../actions/posts'
 
 const initialState = []
@@ -23,6 +24,10 @@ const posts = (state = initialState, action) => {
       return [
         ...state.filter(post => post.id !== action.post.id),
         action.post
+      ]
+    case REMOVE_POST_SUCCESS:
+      return [
+        ...state.filter(post => post.id !== action.post.id)
       ]
     default:
       return state

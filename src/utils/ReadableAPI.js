@@ -34,6 +34,15 @@ export const updatePost = (id, post) =>
     body: JSON.stringify(post)
   }).then(res => res.json())
 
+export const deletePost = (id) =>
+  fetch(`${baseURL}/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+
 /**
  * Comments
  */
