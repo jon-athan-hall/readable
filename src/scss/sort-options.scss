@@ -1,0 +1,11 @@
+.sort-options {
+  margin: 1em;
+
+  &__link {
+    margin-left: 1em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+} // .sort-options

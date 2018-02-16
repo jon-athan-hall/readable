@@ -56,7 +56,7 @@ table {
     margin-right: 2em;
     padding: .25em 0;
     text-decoration: none;
-    text-transform: uppercase; }
+    text-transform: capitalize; }
     .nav__link:last-child {
       margin-right: 0; }
     .nav__link:hover {
@@ -149,6 +149,13 @@ table {
       cursor: pointer; }
   .vote-mechanism__score {
     margin: .5em 0; }
+
+.sort-options {
+  margin: 1em; }
+  .sort-options__link {
+    margin-left: 1em; }
+    .sort-options__link:hover {
+      cursor: pointer; }
 
 html {
   box-sizing: border-box; }

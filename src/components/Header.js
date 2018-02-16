@@ -38,7 +38,6 @@ Header.propTypes = {
  * Directions to map parts of the Redux store to the Component props.
  */
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.categories)
   return {
     categories: state.categories
   }
