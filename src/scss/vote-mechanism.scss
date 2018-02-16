@@ -1,0 +1,19 @@
+.vote-mechanism {
+  position: absolute;
+  left: 0;
+  margin-right: 1em;
+  text-align: center;
+
+  &__button {
+    background-color: $color--background;
+    color: $color--highlight;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__score {
+    margin: .25em 0;
+  }
+} // .vote-mechanism

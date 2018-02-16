@@ -43,6 +43,16 @@ export const deletePost = (id) =>
     }
   }).then(res => res.json())
 
+export const changeScore = (id, direction) =>
+  fetch(`${baseURL}/posts/${id}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ option: direction })
+  }).then(res => res.json())
+
 /**
  * Comments
  */

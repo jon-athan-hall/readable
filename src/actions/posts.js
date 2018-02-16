@@ -4,9 +4,10 @@ import * as ReadableAPI from '../utils/ReadableAPI'
  * Action types for Posts
  */
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
-export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS'
-export const EDIT_POST_SUCCESS = 'EDIT_POST_SUCCESS'
+export const ADD_POST_SUCCESS    = 'ADD_POST_SUCCESS'
+export const EDIT_POST_SUCCESS   = 'EDIT_POST_SUCCESS'
 export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS'
+export const MAKE_VOTE_SUCCESS   = 'MAKE_VOTE_SUCCESS'
 
 /**
  * Action creators for Posts
@@ -28,6 +29,11 @@ export const editPostSuccess = (post) => ({
 
 export const removePostSuccess = (post) => ({
   type: REMOVE_POST_SUCCESS,
+  post
+})
+
+export const makeVoteSuccess = (post) => ({
+  type: MAKE_VOTE_SUCCESS,
   post
 })
 
@@ -64,5 +70,13 @@ export const removePost = (id) => (dispatch) => (
     .deletePost(id)
     .then((post) => {
       dispatch(removePostSuccess(post))
+    })
+)
+
+export const makeVote = (id, direction) => (dispatch) => (
+  ReadableAPI
+    .changeScore(id, direction)
+    .then((post) => {
+      dispatch(makeVoteSuccess(post))
     })
 )

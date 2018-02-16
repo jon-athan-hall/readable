@@ -5,6 +5,7 @@
 @import 'post';
 @import 'post-list';
 @import 'comment-list';
+@import 'vote-mechanism';
 
 html {
   box-sizing: border-box;
@@ -15,7 +16,7 @@ html {
 }
 
 body {
-  background-color: #000;
+  background-color: $color--background;
   color: $color--text;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;

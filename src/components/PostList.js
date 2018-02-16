@@ -10,14 +10,22 @@ import { Link } from 'react-router-dom'
  */
 import { connect } from 'react-redux'
 
+/**
+ * Components
+ */
+import VoteMechanism from './VoteMechanism'
+
 class PostList extends Component {
   render() {
     return (
       <ul className="post-list">
         {this.props.posts.map((post) => (
           <li key={post.id} className="post-list__item">
-            <Link to={`/posts/${post.id}`} className="post-list__title">{post.title}</Link>
-            <h2 className="post-list__byline">submitted by <span className="post-list__author">{post.author}</span></h2>
+            <VoteMechanism id={post.id} score={post.voteScore} />
+            <div className="post-list__info">
+              <Link to={`/posts/${post.id}`} className="post-list__title">{post.title}</Link>
+              <h2 className="post-list__byline">submitted by <span className="post-list__author">{post.author}</span></h2>
+            </div>
           </li>
         ))}
       </ul>
