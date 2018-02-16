@@ -11,6 +11,7 @@ import './index.css';
  * Actions
  */
 import { fetchPosts } from './actions/posts'
+import { fetchCategories } from './actions/categories'
 
 /**
  * Redux
@@ -36,6 +37,7 @@ const reducer = combineReducers({
 })
 const store = createStore(reducer, applyMiddleware(thunk))
 store.dispatch(fetchPosts())
+store.dispatch(fetchCategories())
 
 /**
  * React - Render

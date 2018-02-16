@@ -53,9 +53,10 @@ table {
   padding-bottom: 1em;
   border-bottom: 1px solid #fff; }
   .nav__link {
-    margin-right: 1em;
+    margin-right: 2em;
     padding: .25em 0;
-    text-decoration: none; }
+    text-decoration: none;
+    text-transform: uppercase; }
     .nav__link:last-child {
       margin-right: 0; }
     .nav__link:hover {

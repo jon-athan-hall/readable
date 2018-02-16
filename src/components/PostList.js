@@ -62,8 +62,17 @@ PostList.propTypes = {
  * Directions to map parts of the Redux store to the Component props.
  */
 const mapStateToProps = (state, ownProps) => {
+  const category = ownProps.match.params.category
+  let posts
+
+  if (category) {
+    posts = state.posts.filter((post) => (post.category === category))
+  } else {
+    posts = state.posts
+  }
+
   return {
-    posts: state.posts
+    posts
   }
 }
 
