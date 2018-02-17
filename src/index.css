@@ -85,8 +85,6 @@ table {
 
 .post {
   margin: 1em; }
-  .post__header {
-    margin-bottom: 1em; }
   .post__title {
     margin-bottom: .25em;
     font-size: 1.5em; }
@@ -94,17 +92,17 @@ table {
     font-size: .75em; }
   .post__author {
     color: #daa520; }
-  .post__links {
-    margin: 1em 0; }
+  .post__body {
+    clear: left;
+    margin-bottom: 1em; }
+  .post__info {
+    clear: left; }
   .post__link {
-    margin-right: .5em;
-    padding: .25em .5em;
-    background-color: #daa520;
-    border: 2px solid #fff;
+    margin-left: .5em;
     color: #fff; }
     .post__link:hover {
-      cursor: pointer;
-      text-decoration: none; }
+      color: #daa520;
+      cursor: pointer; }
 
 .post-list {
   margin: 1em; }
@@ -125,6 +123,7 @@ table {
     margin-left: .5em;
     color: #fff; }
     .post-list__link:hover {
+      color: #daa520;
       cursor: pointer; }
 
 .comment-list {
@@ -140,7 +139,7 @@ table {
 
 .vote-mechanism {
   float: left;
-  margin-right: .5em;
+  margin: 0 .5em 1em 0;
   text-align: center; }
   .vote-mechanism__button {
     background-color: #000;

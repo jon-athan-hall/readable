@@ -1,9 +1,5 @@
 .post {
   margin: 1em;
-  
-  &__header {
-    margin-bottom: 1em;
-  }
 
   &__title {
     margin-bottom: .25em;
@@ -18,20 +14,22 @@
     color: $color--highlight;
   }
 
-  &__links {
-    margin: 1em 0;
+  &__body {
+    clear: left;
+    margin-bottom: 1em;
+  }
+
+  &__info {
+    clear: left;
   }
 
   &__link {
-    margin-right: .5em;
-    padding: .25em .5em;
-    background-color: $color--highlight;
-    border: 2px solid $color--text;
+    margin-left: .5em;
     color: $color--text;
 
     &:hover {
+      color: $color--highlight;
       cursor: pointer;
-      text-decoration: none;
     }
   }
 } // .post

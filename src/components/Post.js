@@ -15,6 +15,7 @@ import { removePost } from '../actions/posts'
  * Components
  */
 import CommentList from './CommentList'
+import VoteMechanism from './VoteMechanism' 
 
 /**
  * Redux
@@ -41,12 +42,14 @@ class Post extends Component {
     const post = this.props.post
     return (
       <article className="post">
+        {post.id && (<VoteMechanism id={post.id} score={post.voteScore} />)}
         <header className="post__header">
           <h1 className="post__title">{post.title}</h1>
           <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
         </header>
         <p className="post__body">{post.body}</p>
-        <div className="post__links">
+        <div className="post__info">
+          <span className="post__comments">{post.commentCount} comment{post.commentCount !== 1 && 's'}</span>
           <Link to={`/${post.category}/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
           <a onClick={this.handleClick} className="post__link post__link--delete">Delete</a>
         </div>
