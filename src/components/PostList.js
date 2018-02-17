@@ -69,11 +69,11 @@ class PostList extends Component {
           {this.props.posts.map((post) => (
             <li key={post.id} className="post-list__item">
               <VoteMechanism id={post.id} score={post.voteScore} />
-              <h1><Link to={`/posts/${post.id}`} className="post-list__title">{post.title}</Link></h1>
+              <h1><Link to={`/${post.category}/${post.id}`} className="post-list__title">{post.title}</Link></h1>
               <h2 className="post-list__byline">submitted by <span className="post-list__author">{post.author}</span></h2>
               <div className="post-list__info">
                 <span className="post-list__comments">{post.commentCount} comment{post.commentCount !== 1 && 's'}</span>
-                <Link to={`/posts/${post.id}/edit`} className="post-list__link">Edit</Link>
+                <Link to={`/${post.category}/${post.id}/edit`} className="post-list__link">Edit</Link>
                 <a onClick={(e) => this.handleClick(e, post.id)} className="post-list__link">Delete</a>
               </div>
             </li>

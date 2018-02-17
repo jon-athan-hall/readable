@@ -47,7 +47,7 @@ class Post extends Component {
         </header>
         <p className="post__body">{post.body}</p>
         <div className="post__links">
-          <Link to={`/posts/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
+          <Link to={`/${post.category}/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
           <a onClick={this.handleClick} className="post__link post__link--delete">Delete</a>
         </div>
         <CommentList />
