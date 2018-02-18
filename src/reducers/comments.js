@@ -9,6 +9,10 @@ import {
   MAKE_COMMENT_VOTE_SUCCESS
 } from '../actions/comments'
 
+import {
+  REMOVE_POST_SUCCESS
+} from '../actions/posts'
+
 const initialState = []
 
 /**
@@ -33,6 +37,10 @@ const comments = (state = initialState, action) => {
     case REMOVE_COMMENT_SUCCESS:
       return [
         ...state.filter(comment => comment.id !== action.comment.id)
+      ]
+    case REMOVE_POST_SUCCESS:
+      return [
+        ...state.filter(comment => comment.parentId !== action.post.id)
       ]
     default:
       return state
