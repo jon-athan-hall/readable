@@ -134,9 +134,21 @@ table {
   .comment-list__body {
     margin-bottom: .25em; }
   .comment-list__byline {
+    margin-bottom: .75em;
     font-size: .75em; }
   .comment-list__author {
     color: #daa520; }
+  .comment-list__link {
+    color: #fff; }
+    .comment-list__link:hover {
+      color: #daa520;
+      cursor: pointer; }
+    .comment-list__link--delete {
+      margin-left: .5em; }
+    .comment-list__link--new {
+      clear: both;
+      display: block;
+      margin-left: 2em; }
 
 .vote-mechanism {
   float: left;
