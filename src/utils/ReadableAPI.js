@@ -62,6 +62,26 @@ export const getComments = (id) =>
     headers
   }).then(res => res.json())
 
+export const createComment = (comment) => 
+  fetch(`${baseURL}/comments`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(comment)
+  }).then(res => res.json())
+
+export const updateComment = (id, comment) =>
+  fetch(`${baseURL}/comments/${id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(comment)
+  }).then(res => res.json())
+
 export const deleteComment = (id) =>
   fetch(`${baseURL}/comments/${id}`, {
     method: 'DELETE',

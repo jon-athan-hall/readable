@@ -42,6 +42,7 @@ button {
   color: $color--highlight;
   cursor: pointer;
   font: inherit;
+  line-height: 1em;
 
   &:hover {
     color: $color--text;

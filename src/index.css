@@ -112,7 +112,7 @@ table {
   margin: 3em; }
   .comment-list__item {
     clear: both;
-    margin-bottom: 1em; }
+    margin-bottom: 2em; }
   .comment-list__body {
     margin-bottom: .25em; }
   .comment-list__byline {
@@ -168,7 +168,8 @@ button {
   border: none;
   color: #daa520;
   cursor: pointer;
-  font: inherit; }
+  font: inherit;
+  line-height: 1em; }
   button:hover {
     color: #fff;
     text-decoration: underline; }

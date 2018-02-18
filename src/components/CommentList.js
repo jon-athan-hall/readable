@@ -46,7 +46,7 @@ class CommentList extends Component {
             </li>
           ))}
         </ul>
-        <Link to="/new-comment" className="comment-list__link comment-list__link--new">New Comment</Link>
+        <Link to={`/new-comment/${this.props.postId}`} className="comment-list__link comment-list__link--new">New Comment</Link>
       </div>
     )
   }

@@ -11,6 +11,7 @@ import Header from './Header'
 import PostList from './PostList'
 import Post from './Post'
 import PostForm from './PostForm'
+import CommentForm from './CommentForm'
 
 class App extends Component {
   render() {
@@ -20,6 +21,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={PostList} />
           <Route exact path="/new-post" component={PostForm} />
+          <Route exact path="/new-comment/:parentId" component={CommentForm} />
+          <Route exact path="/comment/:id/edit" component={CommentForm} />
           <Route exact path="/:category/:id/edit" component={PostForm} />
           <Route exact path="/:category/:id" component={Post} />
           <Route exact path="/:category" component={PostList} />

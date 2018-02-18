@@ -3,11 +3,11 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 /**
  * Action types for Posts
  */
-export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
-export const ADD_POST_SUCCESS    = 'ADD_POST_SUCCESS'
-export const EDIT_POST_SUCCESS   = 'EDIT_POST_SUCCESS'
-export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS'
-export const MAKE_POST_VOTE_SUCCESS   = 'MAKE_POST_VOTE_SUCCESS'
+export const FETCH_POSTS_SUCCESS    = 'FETCH_POSTS_SUCCESS'
+export const ADD_POST_SUCCESS       = 'ADD_POST_SUCCESS'
+export const EDIT_POST_SUCCESS      = 'EDIT_POST_SUCCESS'
+export const REMOVE_POST_SUCCESS    = 'REMOVE_POST_SUCCESS'
+export const MAKE_POST_VOTE_SUCCESS = 'MAKE_POST_VOTE_SUCCESS'
 
 /**
  * Action creators for Posts
