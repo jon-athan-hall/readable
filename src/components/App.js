@@ -2,7 +2,7 @@
  * React
  */
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 /**
  * Components
@@ -17,11 +17,13 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <Route exact path="/" component={PostList} />
-        <Route exact path="/new-post" component={PostForm} />
-        <Route exact path="/:category/:id/edit" component={PostForm} />
-        <Route exact path="/:category/:id" component={Post} />
-        <Route exact path="/:category" component={PostList} />
+        <Switch>
+          <Route exact path="/" component={PostList} />
+          <Route exact path="/new-post" component={PostForm} />
+          <Route exact path="/:category/:id/edit" component={PostForm} />
+          <Route exact path="/:category/:id" component={Post} />
+          <Route exact path="/:category" component={PostList} />
+        </Switch>
       </div>
     )
   }

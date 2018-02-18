@@ -61,8 +61,8 @@ class PostList extends Component {
       <div>
         <div className="sort-options">
           <span className="sort-options__heading">Sort by:</span>
-          <a onClick={(e) => this.handleSort(e, 'time')} className="sort-options__link">Most Recent</a>
-          <a onClick={(e) => this.handleSort(e, 'score')} className="sort-options__link">Highest Score</a>
+          <button onClick={() => this.handleSort('time')} className="sort-options__link">Most Recent</button>
+          <button onClick={() => this.handleSort('score')} className="sort-options__link">Highest Score</button>
         </div>
         <ul className="post-list">
           {this.props.posts.map((post) => (

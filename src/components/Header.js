@@ -18,10 +18,11 @@ class Header extends Component {
     return (
       <nav className="nav">
         <Link to="/" className="nav__link">Home</Link>
+        <Link to="/new-post" className="nav__link">New Post</Link>
+        <span className="nav__label">Categories:</span>
         {this.props.categories.map((category) => (
           <Link key={category.path} to={`/${category.path}`} className="nav__link">{category.name}</Link>
         ))}
-        <Link to="/new-post" className="nav__link">New Post</Link>
       </nav>
     )
   }
