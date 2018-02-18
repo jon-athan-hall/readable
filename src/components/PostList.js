@@ -32,8 +32,7 @@ class PostList extends Component {
     this.handleSort = this.handleSort.bind(this)
   }
 
-  handleClick(e, postId) {
-    e.preventDefault();
+  handleClick(postId) {
     this.props.removePost(postId)
   }
 

@@ -32,8 +32,7 @@ class Post extends Component {
     this.props.fetchComments(this.props.match.params.id)
   }
 
-  handleClick(e) {
-    e.preventDefault();
+  handleClick() {
     this.props.removePost(this.props.post.id)
     this.props.history.push('/')
   }
