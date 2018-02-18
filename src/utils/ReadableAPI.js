@@ -43,7 +43,7 @@ export const deletePost = (id) =>
     }
   }).then(res => res.json())
 
-export const changeScore = (id, direction) =>
+export const changePostScore = (id, direction) =>
   fetch(`${baseURL}/posts/${id}`, {
     method: 'POST',
     headers: {
@@ -60,6 +60,16 @@ export const getComments = (id) =>
   fetch(`${baseURL}/posts/${id}/comments`, {
     method: 'GET',
     headers
+  }).then(res => res.json())
+
+export const changeCommentScore = (id, direction) =>
+  fetch(`${baseURL}/comments/${id}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ option: direction })
   }).then(res => res.json())
 
 /**

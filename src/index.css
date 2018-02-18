@@ -127,9 +127,10 @@ table {
       cursor: pointer; }
 
 .comment-list {
-  margin: 1em; }
+  margin: 2em; }
   .comment-list__item {
-    margin: 2em 0 0 2em; }
+    clear: both;
+    margin-bottom: 1em; }
   .comment-list__body {
     margin-bottom: .25em; }
   .comment-list__byline {

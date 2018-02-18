@@ -68,7 +68,7 @@ class PostList extends Component {
         <ul className="post-list">
           {this.props.posts.map((post) => (
             <li key={post.id} className="post-list__item">
-              <VoteMechanism id={post.id} score={post.voteScore} />
+              <VoteMechanism type="post" id={post.id} score={post.voteScore} />
               <h1><Link to={`/${post.category}/${post.id}`} className="post-list__title">{post.title}</Link></h1>
               <h2 className="post-list__byline">submitted by <span className="post-list__author">{post.author}</span></h2>
               <div className="post-list__info">
@@ -104,6 +104,8 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     posts = state.posts
   }
+
+  posts.sort((x, y) => (x.id < y.id))
 
   return {
     posts

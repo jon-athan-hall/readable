@@ -16,7 +16,7 @@ import { fetchCategories } from './actions/categories'
 /**
  * Redux
  */
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
@@ -35,7 +35,10 @@ const reducer = combineReducers({
   comments: commentsReducer,
   categories: categoriesReducer
 })
-const store = createStore(reducer, applyMiddleware(thunk))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(
+  applyMiddleware(thunk)
+))
 store.dispatch(fetchPosts())
 store.dispatch(fetchCategories())
 

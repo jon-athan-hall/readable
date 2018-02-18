@@ -42,7 +42,7 @@ class Post extends Component {
     const post = this.props.post
     return (
       <article className="post">
-        {post.id && (<VoteMechanism id={post.id} score={post.voteScore} />)}
+        {post.id && (<VoteMechanism type="post" id={post.id} score={post.voteScore} />)}
         <header className="post__header">
           <h1 className="post__title">{post.title}</h1>
           <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
@@ -53,7 +53,7 @@ class Post extends Component {
           <Link to={`/${post.category}/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
           <a onClick={this.handleClick} className="post__link post__link--delete">Delete</a>
         </div>
-        <CommentList />
+        <CommentList postId={post.id} />
       </article>
     )
   }

@@ -7,7 +7,8 @@ import PropTypes from 'prop-types'
 /**
  * Actions
  */
-import { makeVote } from '../actions/posts'
+import { makePostVote } from '../actions/posts'
+import { makeCommentVote } from '../actions/comments'
 
 /**
  * Redux
@@ -21,7 +22,16 @@ class VoteMechanism extends Component {
   }
 
   handleClick(direction) {
-    this.props.makeVote(this.props.id, direction)
+    switch (this.props.type) {
+      case "post":
+        this.props.makePostVote(this.props.id, direction)
+        break;
+      case "comment":
+        this.props.makeCommentVote(this.props.id, direction)
+        break;
+      default:
+        this.props.makePostVote(this.props.id, direction)
+    }
   }
 
   render() {
@@ -39,6 +49,7 @@ class VoteMechanism extends Component {
  * Validation for the Component props.
  */
 VoteMechanism.propTypes = {
+  type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired
 }
@@ -48,7 +59,8 @@ VoteMechanism.propTypes = {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    makeVote: (id, direction) => dispatch(makeVote(id, direction))
+    makePostVote: (id, direction) => dispatch(makePostVote(id, direction)),
+    makeCommentVote: (id, direction) => dispatch(makeCommentVote(id, direction))
   }
 }
 

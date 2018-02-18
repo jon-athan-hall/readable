@@ -7,7 +7,7 @@ export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const ADD_POST_SUCCESS    = 'ADD_POST_SUCCESS'
 export const EDIT_POST_SUCCESS   = 'EDIT_POST_SUCCESS'
 export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS'
-export const MAKE_VOTE_SUCCESS   = 'MAKE_VOTE_SUCCESS'
+export const MAKE_POST_VOTE_SUCCESS   = 'MAKE_POST_VOTE_SUCCESS'
 
 /**
  * Action creators for Posts
@@ -32,8 +32,8 @@ export const removePostSuccess = (post) => ({
   post
 })
 
-export const makeVoteSuccess = (post) => ({
-  type: MAKE_VOTE_SUCCESS,
+export const makePostVoteSuccess = (post) => ({
+  type: MAKE_POST_VOTE_SUCCESS,
   post
 })
 
@@ -73,10 +73,10 @@ export const removePost = (id) => (dispatch) => (
     })
 )
 
-export const makeVote = (id, direction) => (dispatch) => (
+export const makePostVote = (id, direction) => (dispatch) => (
   ReadableAPI
-    .changeScore(id, direction)
+    .changePostScore(id, direction)
     .then((post) => {
-      dispatch(makeVoteSuccess(post))
+      dispatch(makePostVoteSuccess(post))
     })
 )
