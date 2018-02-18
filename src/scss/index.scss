@@ -26,9 +26,25 @@ body {
 
 a {
   color: $color--highlight;
+  line-height: 1em;
   text-decoration: none;
 
   &:hover {
+    color: $color--text;
+    text-decoration: underline;
+  }
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  color: $color--highlight;
+  cursor: pointer;
+  font: inherit;
+
+  &:hover {
+    color: $color--text;
     text-decoration: underline;
   }
 }

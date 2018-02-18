@@ -51,9 +51,9 @@ class Post extends Component {
         <div className="post__info">
           <span className="post__comments">{post.commentCount} comment{post.commentCount !== 1 && 's'}</span>
           <Link to={`/${post.category}/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
-          <a onClick={this.handleClick} className="post__link post__link--delete">Delete</a>
+          <button onClick={this.handleClick} className="post__link post__link--delete">Delete</button>
         </div>
-        <CommentList postId={post.id} />
+        {post.id && (<CommentList postId={post.id} />)}
       </article>
     )
   }

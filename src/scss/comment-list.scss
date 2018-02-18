@@ -1,5 +1,5 @@
 .comment-list {
-  margin: 2em;
+  margin: 3em;
 
   &__item {
     clear: both;
@@ -20,21 +20,8 @@
   }
 
   &__link {
-    color: $color--text;
-
-    &:hover {
-      color: $color--highlight;
-      cursor: pointer;
-    }
-
     &--delete {
       margin-left: .5em;
-    }
-
-    &--new {
-      clear: both;
-      display: block;
-      margin-left: 2em;
     }
   }
 } // .comment-list

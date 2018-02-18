@@ -6,16 +6,9 @@
   &__link {
     margin-right: 2em;
     padding: .25em 0;
-    text-decoration: none;
-    text-transform: capitalize;
 
     &:last-child {
       margin-right: 0;
-    }
-
-    &:hover {
-      color: $color--text;
-      text-decoration: none;
     }
   }
 } // .nav

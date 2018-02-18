@@ -3,6 +3,7 @@
  */
 import {
   FETCH_COMMENTS_SUCCESS,
+  REMOVE_COMMENT_SUCCESS,
   MAKE_COMMENT_VOTE_SUCCESS
 } from '../actions/comments'
 
@@ -15,7 +16,13 @@ const comments = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COMMENTS_SUCCESS:
       const { comments } = action
-      return state.filter(x => !comments.find(y => x.id === y.id)).concat(comments)
+      return [
+        ...state.filter(x => !comments.find(y => x.id === y.id)).concat(comments)
+      ]
+    case REMOVE_COMMENT_SUCCESS:
+      return [
+        ...state.filter(comment => comment.id !== action.comment.id)
+      ]
     case MAKE_COMMENT_VOTE_SUCCESS:
       return [
         ...state.filter(comment => comment.id !== action.comment.id),

@@ -11,6 +11,11 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 /**
+ * Actions
+ */
+import { removeComment } from '../actions/comments'
+
+/**
  * Components
  */
 import VoteMechanism from './VoteMechanism'
@@ -21,7 +26,8 @@ class CommentList extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(e, id) {
+  handleClick(id) {
+    this.props.removeComment(id)
   }
 
   render() {
@@ -35,7 +41,7 @@ class CommentList extends Component {
               <p className="comment-list__byline">submitted by <span className="comment-list__author">{comment.author}</span></p>
               <div className="comment-list__links">
                 <Link to={`/comment/${comment.id}/edit`} className="comment-list__link">Edit</Link>
-                <a onClick={(e) => this.handleClick(e, comment.id)} className="comment-list__link comment-list__link--delete">Delete</a>
+                <button onClick={() => this.handleClick(comment.id)} className="comment-list__link comment-list__link--delete">Delete</button>
               </div>
             </li>
           ))}
@@ -50,7 +56,7 @@ class CommentList extends Component {
  * Validation for the Component props.
  */
 CommentList.propTypes = {
-  postId: PropTypes.number.isRequired,
+  postId: PropTypes.string.isRequired,
   comments: PropTypes.array.isRequired
 }
 
@@ -68,6 +74,15 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 /**
+ * Directions to map particular dispatch methods to the Component props.
+ */
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeComment: (commentId) => dispatch(removeComment(commentId))
+  }
+}
+
+/**
  * Connect this Component to the Redux Store.
  */
-export default connect(mapStateToProps, null)(CommentList)
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList)

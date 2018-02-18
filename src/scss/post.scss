@@ -15,8 +15,7 @@
   }
 
   &__body {
-    clear: left;
-    margin-bottom: 1em;
+    margin: 1em 0;
   }
 
   &__info {
@@ -25,11 +24,5 @@
 
   &__link {
     margin-left: .5em;
-    color: $color--text;
-
-    &:hover {
-      color: $color--highlight;
-      cursor: pointer;
-    }
   }
 } // .post

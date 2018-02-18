@@ -37,8 +37,7 @@ class PostList extends Component {
     this.props.removePost(postId)
   }
 
-  handleSort(e, sortBy) {
-    e.preventDefault()
+  handleSort(sortBy) {
     this.setState({
       sortBy
     })
@@ -74,7 +73,7 @@ class PostList extends Component {
               <div className="post-list__info">
                 <span className="post-list__comments">{post.commentCount} comment{post.commentCount !== 1 && 's'}</span>
                 <Link to={`/${post.category}/${post.id}/edit`} className="post-list__link">Edit</Link>
-                <a onClick={(e) => this.handleClick(e, post.id)} className="post-list__link">Delete</a>
+                <button onClick={() => this.handleClick(post.id)} className="post-list__link">Delete</button>
               </div>
             </li>
           ))}

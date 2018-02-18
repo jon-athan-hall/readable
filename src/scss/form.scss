@@ -16,17 +16,4 @@
   &__textarea {
     height: 10em;
   }
-
-  &__button {
-    padding: .25em .5em;
-    background-color: $color--highlight;
-    border: 2px solid #fff;
-    color: $color--text;
-    font-size: 16px;
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: none;
-    }
-  }
 } // .form

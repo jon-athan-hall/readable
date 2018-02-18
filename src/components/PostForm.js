@@ -92,7 +92,7 @@ class PostForm extends Component {
           </select>
         </div>
         <div className="form__group">
-          <input type="submit" value={submitText} className="form__button form__button--submit" />
+          <button type="submit" className="form__button form__button--submit">{submitText}</button>
         </div>
       </form>
     )

@@ -62,6 +62,15 @@ export const getComments = (id) =>
     headers
   }).then(res => res.json())
 
+export const deleteComment = (id) =>
+  fetch(`${baseURL}/comments/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+
 export const changeCommentScore = (id, direction) =>
   fetch(`${baseURL}/comments/${id}`, {
     method: 'POST',
