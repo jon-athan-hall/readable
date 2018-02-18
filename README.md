@@ -10,6 +10,7 @@
 * Grab the source code with `git clone https://github.com/jon-athan-hall/readable.git`
 * Install the system reauirements with `npm install`
 * Fire up the front-end with `npm start`
+* Visit at `http://localhost:3000/`
 
 ## Open Source License
 Copyright 2018 Jonathan Edward Hall
