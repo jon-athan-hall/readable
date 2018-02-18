@@ -16,6 +16,7 @@ import { removePost } from '../actions/posts'
  */
 import CommentList from './CommentList'
 import VoteMechanism from './VoteMechanism' 
+import NotFound from './NotFound'
 
 /**
  * Redux
@@ -40,20 +41,27 @@ class Post extends Component {
   render() {
     const post = this.props.post
     return (
-      <article className="post">
-        {post.id && (<VoteMechanism type="post" id={post.id} score={post.voteScore} />)}
-        <header className="post__header">
-          <h1 className="post__title">{post.title}</h1>
-          <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
-        </header>
-        <p className="post__body">{post.body}</p>
-        <div className="post__info">
-          <span className="post__comments">{post.commentCount} comment{post.commentCount !== 1 && 's'}</span>
-          <Link to={`/${post.category}/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
-          <button onClick={this.handleClick} className="post__link post__link--delete">Delete</button>
-        </div>
-        {post.id && (<CommentList postId={post.id} />)}
-      </article>
+      <div>
+        {post &&
+          <article className="post">
+            {post.id && (<VoteMechanism type="post" id={post.id} score={post.voteScore} />)}
+            <header className="post__header">
+              <h1 className="post__title">{post.title}</h1>
+              <h2 className="post__byline">submitted by <span className="post__author">{post.author}</span></h2>
+            </header>
+            <p className="post__body">{post.body}</p>
+            <div className="post__info">
+              <span className="post__comments">{post.commentCount} comment{post.commentCount !== 1 && 's'}</span>
+              <Link to={`/${post.category}/${post.id}/edit`} className="post__link post__link--edit">Edit</Link>
+              <button onClick={this.handleClick} className="post__link post__link--delete">Delete</button>
+            </div>
+            {post.id && (<CommentList postId={post.id} />)}
+          </article>
+        }
+        {(post === undefined) &&
+          <NotFound />
+        }
+      </div>
     )
   }
 }
